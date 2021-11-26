@@ -54,7 +54,9 @@ const MainBoard = (): JSX.Element => {
     }, [puzzle])
 
     const getCellNum = (col: number, row: number): string => {
-        return cellNums[col][row] === 0 ? '' : String(cellNums[col][row])
+        const cellNum = cellNums?.[col]?.[row]
+        return cellNum ? String(cellNum) : ''
+        // return cellNums[col][row] === 0 ? '' : String(cellNums[col][row])
     }
 
     return (
@@ -64,10 +66,10 @@ const MainBoard = (): JSX.Element => {
                 <div className={`grid grid-flow-col grid-cols-${cols} grid-rows-${rows} gap-4>`}>
                     {
                         (new Array(rows)).fill(undefined).map((_, row) => {
-                            return gridRows.map((gridRow, col) => {
+                            return gridRows.map((_, col) => {
                                 return gridRows[col][row] === '.' ?
-                                    <EmptyGridSpace key={row} />
-                                    : <GridSpace cellNumber={getCellNum(col, row)} cellLetter={gridRows[col][row]}></GridSpace>
+                                    <EmptyGridSpace key={`cell-${col}-${row}-empty`} />
+                                    : <GridSpace key={`cell-${col}-${row}-letter`} cellNumber={getCellNum(col, row)} cellLetter={gridRows[col][row]}></GridSpace>
 
                             })
                         })

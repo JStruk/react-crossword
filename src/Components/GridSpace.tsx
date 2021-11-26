@@ -6,7 +6,6 @@ interface GridSpaceProps {
 const GridSpace = ({ cellNumber, cellLetter }: GridSpaceProps): JSX.Element => {
     return (
         <div
-
             className="border border-red-200">
             <div className="text-sm text-left">
                 {cellNumber}
