@@ -1,17 +1,18 @@
+import { Cell } from '../types/Cell'
+
 interface GridSpaceProps {
-    cellNumber: string
-    cellLetter: string
+    cell: Cell
 }
 
-const GridSpace = ({ cellNumber, cellLetter }: GridSpaceProps): JSX.Element => {
+const GridSpace = ({ cell }: GridSpaceProps): JSX.Element => {
     return (
         <div
-            className="border border-red-200">
+            className={`border border-red-200 ${cell.isSelectedCell ? 'bg-blue-100' : ''}`}>
             <div className="text-sm text-left">
-                {cellNumber}
+                {cell.cellNumber === 0 ? '' : cell.cellNumber}
             </div>
             <div className="text-center text-xl h-12">
-                {/* {cellLetter} */}
+                {cell.typedLetter}
             </div>
         </div>
     )

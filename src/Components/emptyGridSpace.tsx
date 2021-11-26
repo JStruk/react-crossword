@@ -1,9 +1,11 @@
+interface EmptyGridSpaceProps {
+    isSelectedCell: boolean
+}
 
-
-const EmptyGridSpace = (): JSX.Element => {
+const EmptyGridSpace = ({ isSelectedCell }: EmptyGridSpaceProps): JSX.Element => {
     return (
         <div
-            className="border border-red-200 bg-gray-400">
+            className={`border border-red-200 bg-gray-400 ${isSelectedCell ? 'bg-red-200' : ''}`}>
         </div>
     )
 }
